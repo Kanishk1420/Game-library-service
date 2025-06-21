@@ -4,7 +4,7 @@ Welcome to the Video Game API! This comprehensive API allows you to manage and e
 
 ## 📊 Repository Information
 
-**GitHub Repository:** [https://github.com/yourusername/video-game-api](https://github.com/yourusername/video-game-api)
+**GitHub Repository:** [https://github.com/Kanishk1420/Game-library-service.git](https://github.com/Kanishk1420/Game-library-service.git)
 
 ## 💾 Database Information
 
