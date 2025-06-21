@@ -403,11 +403,11 @@ const sampleGames = [
   description: "The latest entry in the legendary FINAL FANTASY series, an epic dark fantasy world where the fate of the land is decided by the mighty Eikons and the Dominants who wield them.",
   coverImage: "https://upload.wikimedia.org/wikipedia/en/0/00/Final_Fantasy_XVI_cover_art.png",
   screenshots: [
-    "https://assets.xboxservices.com/assets/04/6e/046ee635-5c40-441c-89f3-50urjidm1234.jpg?n=FFXVI_Feature-Image-Priority_1083x609.jpg",
-    "https://cdn2.unrealengine.com/ffxvi-s9-03-1920x1080-f7a0c24110ca.jpg",
-    "https://imgix.bustle.com/uploads/image/2023/6/12/ae7ede43-e7af-492a-94cb-3db4ca74693c-ff16-preview-05.jpg",
-    "https://assets-prd.ignimgs.com/2022/12/10/ffxvi-1670644530648.jpg",
-    "https://cdn.mos.cms.futurecdn.net/ftmqPQYFKiJdSPJ3WmVrUP.jpg"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu2thJ56q8FlqMYL--n-drwgYDs42oFC1xEg&s",
+    "https://www.newgamenetwork.com/images/uploads/gallery/FinalFantasy16/ffxvi_01.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4GF7TGlYcZFIurbj5MW2PD_N_PHRtFeBcZA&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtWNAWm4yBFmw78veddhXZqkv--fMm3Tkb5g&s",
+    "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/06/final-fantasy-16-landscape-screenshots-ifrit.jpg"
   ],
   systemRequirements: {
     minimum: {
@@ -453,11 +453,11 @@ const sampleGames = [
   description: "The story of Cal Kestis continues in this galaxy-spanning adventure as he learns what it means to be a Jedi in dark times.",
   coverImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdEMHLxMUvNAxFKfIfwITArtEtXChYWN7tWA&s",
   screenshots: [
-    "https://media.contentapi.ea.com/content/dam/ea/starwars/jedi-survivor/images/2023/03/jsurv-overview-media-carousel-2-3840x2160.jpg.adapt.crop16x9.1920w.jpg",
-    "https://assets.xboxservices.com/assets/34/0d/340d69a0-a20f-41a4-9510-638c7bd296f1_JediS-Hero-1414x796-5ec838d1d775.jpg?n=SWJS_Content-Placement-0_Hero_1414x796.jpg",
-    "https://i.ytimg.com/vi/giKEauXXl3Q/maxresdefault.jpg",
-    "https://image.api.playstation.com/vulcan/ap/rnd/202212/1223/C0vAnUXdW7ANRgJfvFnhTRg8.png",
-    "https://cdn.akamai.steamstatic.com/steam/apps/1774580/ss_59a1b14e01987c468f0dd5a5c7b126c7b5de9678.jpg"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOgWiG4sw19_i9QCk6RS-Cf7itaPqM0CHVYQ&s",
+    "https://preview.redd.it/screenshots-i-took-while-playing-jedi-survivor-definitely-v0-h5rhjy2eddhc1.png?width=1080&crop=smart&auto=webp&s=9a7e71758159a3c1c8c0d35de9cfbee1dd3ce2bb",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZmkECcM0eyuK66skCvfw3RzXotOpIJLEALg&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxc7kSRv9_6z3PqaoRzBFZ2cAsBPE-ZXqA1w&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4I04ExS7dw-Avmg0yH_nyxp5EDmVPD8pSIA&s"
   ],
   systemRequirements: {
     minimum: {
@@ -498,11 +498,16 @@ const sampleGames = [
   description: "The first new universe in over 25 years from the acclaimed developers of Skyrim and Fallout. In this next-generation role-playing game, create any character you want and explore with unparalleled freedom.",
   coverImage: "https://i.redd.it/4r2l5k1zrnpb1.jpg",
   screenshots: [
-    "https://cdn.mos.cms.futurecdn.net/aHKod3Zak9BC3aHTJBFXKi.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/ss_75d35e191791835acce76639c66be8d0c791a828.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/ss_7aac832b4282981c882e865a02a7e5fe32ef9465.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/ss_c8f57bf4c09a15e6bbac5facae2c9cffc0be66bc.jpg",
-    "https://cdn.mos.cms.futurecdn.net/tDAp6Z6GzkdpsMkxNGfJQ9.jpg"
+ "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_001.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_002.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_003.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_004.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_005.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_006.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_007.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_008.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_009.jpg",
+    "https://www.gematsu.com/wp-content/uploads/2022/06/Starfield_2022_06-12-22_010.jpg"
   ],
   systemRequirements: {
     minimum: {
@@ -543,11 +548,11 @@ const sampleGames = [
   description: "Become Eivor, a legendary Viking warrior raised on tales of battle and glory. Explore England's Dark Ages as you raid your enemies, grow your settlement, and build your political power.",
   coverImage: "https://i.pinimg.com/736x/b5/96/d8/b596d8a6487ad05f323b10494457eef5.jpg",
   screenshots: [
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/ss_26b083fcaa5934d4868e7282d1674075e4741f53.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/ss_35b67bff0eab8170c2dba7fdce899056f3c17627.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/ss_ce3bbe17d2639acf67068a73d076b30bd3769fbb.jpg",
-    "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/ss_fc9b3ca7e0def6aec290d3717c0bf334e3d6ac0a.jpg",
-    "https://cdn.mos.cms.futurecdn.net/5dDJRsmaYbWPtp45LARk9P.jpg"
+    "https://www.rpgfan.com/wp-content/uploads/2020/07/Assassins-Creed-Valhalla-Screenshot-011.jpg",
+    "https://w0.peakpx.com/wallpaper/770/916/HD-wallpaper-assassin-s-creed-valhalla-screenshot.jpg",
+    "https://w0.peakpx.com/wallpaper/952/404/HD-wallpaper-assassin-s-creed-valhalla-screenshot.jpg",
+    "https://w0.peakpx.com/wallpaper/138/800/HD-wallpaper-assassins-creed-valhalla-2020-game-screenshot.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPIuLbwT2ccdPYYD4wY19CqLtZVOD7rFbw3g&s"
   ],
   systemRequirements: {
     minimum: {
