@@ -22,6 +22,33 @@ All API responses are returned in JSON format with proper content-type headers. 
 
 ---
 
+## 📊 API Endpoints at a Glance
+
+Here's a quick reference table of all available endpoints:
+
+| Method | Endpoint | Description | Query Parameters |
+|--------|----------|-------------|-----------------|
+| GET | `/api/games` | Get all games | `page`, `limit`, `platform`, `genre` |
+| GET | `/api/games/:id` | Get single game | `fields` |
+| POST | `/api/games` | Create new game | - |
+| PUT | `/api/games/:id` | Update entire game | - |
+| PATCH | `/api/games/:id` | Partially update game | - |
+| DELETE | `/api/games/:id` | Delete a game | - |
+| GET | `/api/games/search` | Search for games | `title`, `genre`, `developer`, `minRating`, `maxPrice` |
+| GET | `/api/games/platform/:platform` | Filter by platform | - |
+| GET | `/api/games/:id/platforms` | Get game platforms | - |
+| GET | `/api/games/:id/genre` | Get game genres | - |
+| GET | `/api/games/:id/developer` | Get game developer | - |
+| GET | `/api/games/:id/screenshots` | Get game screenshots | - |
+| GET | `/api/games/:id/requirements` | Get system requirements | - |
+| GET | `/api/games/:id/:property` | Get any property | - |
+| GET | `/api/games/with-dlc` | Get games with DLC | - |
+| GET | `/api/games/:id/dlc` | Get game's DLC | - |
+
+Now onto the detailed documentation...
+
+---
+
 ## 🎮 Game Management
 
 ### Get All Games
@@ -443,6 +470,35 @@ The API automatically applies these transformations to make your life easier:
 
 ---
 
+## 🚀 Future Plans
+
+I'm excited to share that we have big plans for this Video Game API!
+
+### Going Public
+
+We're working on making this API freely available to the public! Soon, you won't need to run it locally - you'll be able to access all this game data from our hosted servers with a simple API key.
+
+### Expanding the Game Library
+
+Our current collection of games is just the beginning! We're committed to:
+
+- Adding 50+ new games every month
+- Including more indie titles and classics
+- Expanding coverage across more platforms and genres
+- Adding more detailed information like player counts and awards
+
+### Coming Features
+
+Some exciting features in our development pipeline:
+
+- **User Reviews API**: Access and submit community reviews
+- **Game Comparison**: Compare multiple games side-by-side
+- **Similar Games**: Recommendation engine to find games like ones you enjoy
+- **Live Player Stats**: Connect to real-time player count data where available
+- **Price Tracking**: Historical price data and sale alerts
+
+We're building this API with the community in mind, so if you have suggestions or requests for games or features you'd like to see, please reach out! This is a passion project meant to help developers, students, and gaming enthusiasts build amazing projects.
+
 ## 💡 Tips for Developers
 
 1. **Pagination**: Always use pagination for large datasets to improve performance
@@ -450,12 +506,13 @@ The API automatically applies these transformations to make your life easier:
 3. **Search Optimization**: Combine multiple search parameters for more precise results
 4. **Error Handling**: Always check the HTTP status code and handle errors gracefully
 5. **Price Handling**: Remember that prices are returned in cents, so divide by 100 for display
+6. **Cache Responses**: Once the API goes public, implement caching to reduce your API calls
 
 ## 🎮 Happy Gaming!
 
 This API is designed to make building gaming applications a breeze. Whether you're creating the next big gaming platform or just need some test data, we've got you covered. 
 
-Need help? Found a bug? Feel free to reach out to our development team!
+Need help? Found a bug? Have a game you'd like to see added to our database? Feel free to reach out to our development team! We're gamers too and we love hearing about the cool projects you're building with our API.
 
 ---
 
