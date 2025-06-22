@@ -65,7 +65,7 @@ The Video Games API provides the following features:
    PORT=5000
    ```
 
-4. Seed the database (optional):
+4. Seed the database (If you want to populate the database with initial game data):
    ```
    node seedData.js
    ```
