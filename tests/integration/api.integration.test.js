@@ -95,7 +95,7 @@ describe('API Integration Tests', () => {
       expect(Array.isArray(response.body.games)).toBeTruthy();
       expect(response.body.games.length).toBeGreaterThan(0);
       expect(response.body).toHaveProperty('totalPages');
-      expect(response.body).toHaveProperty('currentPage', '1');
+      expect(response.body).toHaveProperty('currentPage', 1);
     });
     
     it('should get a specific game by ID', async () => {

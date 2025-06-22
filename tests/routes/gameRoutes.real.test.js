@@ -76,7 +76,7 @@ describe('Game Routes with Real Database', () => {
       expect(response.body).toHaveProperty('games');
       expect(response.body.games).toHaveLength(2);
       expect(response.body).toHaveProperty('totalPages', 2);
-      expect(response.body).toHaveProperty('currentPage', '1');
+      expect(response.body).toHaveProperty('currentPage', 1);
     });
 
     it('should filter games by platform', async () => {

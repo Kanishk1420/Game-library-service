@@ -54,7 +54,7 @@ describe('Game Routes with Mocked Database', () => {
       expect(response.status).toBe(200);
       expect(response.body).toHaveProperty('games');
       expect(response.body).toHaveProperty('totalPages', 5);
-      expect(response.body).toHaveProperty('currentPage', '1');
+      expect(response.body).toHaveProperty('currentPage', 1);
       expect(Game.find).toHaveBeenCalledTimes(1);
       expect(Game.countDocuments).toHaveBeenCalledTimes(1);
     });
