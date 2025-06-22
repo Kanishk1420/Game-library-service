@@ -166,6 +166,55 @@ The test suite aims for comprehensive coverage of all API endpoints and function
 - **Mock Tests**: Verify route handlers with mocked database interactions
 - **Model Tests**: Validate schema and model validation functionality
 
+## Contributing
+
+We welcome and encourage contributions to this project! Here's how you can help:
+
+### Game Data Contributions
+- **Adding Games**: Feel free to create pull requests to update the `seedData.js` file with new game entries
+- **Updating Game Information**: If you notice outdated or incorrect game information, PRs to correct the data are appreciated
+- **Data Format**: Ensure new game entries follow the existing schema format
+
+### Code Contributions
+- Fork the repository
+- Create your feature branch (`git checkout -b feature/amazing-feature`)
+- Commit your changes (`git commit -m 'Add some amazing feature'`)
+- Push to the branch (`git push origin feature/amazing-feature`)
+- Open a Pull Request
+
+### API Usage
+- This API is free to use for personal, educational, and commercial projects
+- Please include attribution to this repository when using the API in your projects
+- Consider contributing back any improvements or bug fixes you develop
+
+All contributions are subject to the MIT License as detailed below.
+
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see below for details:
+
+```
+MIT License
+
+Copyright (c) 2025 [Kanishk]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
