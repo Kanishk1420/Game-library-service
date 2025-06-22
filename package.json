@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:integration": "cross-env NODE_ENV=test jest tests/integration --detectOpenHandles --forceExit",
+    "test:all": "cross-env NODE_ENV=test jest --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +20,11 @@
     "mongoose": "^8.16.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "cross-env": "^7.0.3",
+    "jest": "^30.0.2",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.10",
+    "sinon": "^21.0.0",
+    "supertest": "^7.1.1"
   }
 }

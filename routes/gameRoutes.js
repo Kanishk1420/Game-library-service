@@ -34,7 +34,8 @@ router.use((req, res, next) => {
       
       // Convert price to integer (cents)
       if (game.price && game.price.amount) {
-        game.price.amount = Math.round(game.price.amount * 100);
+        // Keep as decimal
+        game.price.amount = parseFloat(game.price.amount);
       }
       
       // Ensure coverImage has a valid extension
@@ -141,9 +142,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Normalize price middleware
+const normalizePrice = (priceData) => {
+  if (priceData && priceData.amount) {
+    // Ensure amount is stored as a proper decimal number
+    priceData.amount = parseFloat(priceData.amount);
+  }
+  return priceData;
+};
+
 // Update a game
 router.put('/:id', async (req, res) => {
   try {
+    if (req.body.price) {
+      req.body.price = normalizePrice(req.body.price);
+    }
+    
     console.log('Update request for ID:', req.params.id);
     console.log('Update data:', req.body);
     
@@ -262,6 +276,38 @@ router.get('/:id/requirements', async (req, res) => {
   }
 });
 
+// Get games with DLC
+router.get('/with-dlc', async (req, res) => {
+  try {
+    const gamesWithDLC = await Game.find({ 
+      dlc: { $exists: true, $not: { $size: 0 } } 
+    }).exec();
+    
+    res.json(gamesWithDLC);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get DLCs for a specific game
+router.get('/:id/dlc', async (req, res) => {
+  try {
+    const game = await Game.findById(req.params.id).select('title dlc');
+    
+    if (!game) {
+      return res.status(404).json({ message: 'Game not found' });
+    }
+    
+    if (!game.dlc || !Array.isArray(game.dlc)) {
+      return res.status(404).json({ message: 'No DLC found for this game' });
+    }
+    
+    res.json(game);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Add a generic property access route
 router.get('/:id/:property', async (req, res) => {
   try {
@@ -288,33 +334,6 @@ router.get('/:id/:property', async (req, res) => {
     
     // Return just the value of the requested property
     res.json(game[property]);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-// Get games with DLC
-router.get('/with-dlc', async (req, res) => {
-  try {
-    // Find games that have DLC content
-    const games = await Game.find({ dlc: { $exists: true, $ne: [] } });
-    res.json(games);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-// Get specific game's DLCs
-router.get('/:id/dlc', async (req, res) => {
-  try {
-    const game = await Game.findById(req.params.id).select('title dlc');
-    
-    if (!game) return res.status(404).json({ message: 'Game not found' });
-    if (!game.dlc || game.dlc.length === 0) {
-      return res.json({ title: game.title, dlc: [] });
-    }
-    
-    res.json({ title: game.title, dlc: game.dlc });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

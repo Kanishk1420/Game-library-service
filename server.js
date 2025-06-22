@@ -7,11 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
 // Import routes
 const gameRoutes = require('./routes/gameRoutes');
 
@@ -29,8 +24,28 @@ app.use((req, res, next) => {
   next();
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Connect to MongoDB - only if not in test mode
+// This is the key change - we don't automatically connect when imported in tests
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+  }
+};
+
+// Start server if not being imported for testing
+if (process.env.NODE_ENV !== 'test') {
+  // Connect to DB and start server when running normally
+  connectDB().then(() => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  });
+}
+
+// Export for testing
+module.exports = { app, connectDB };
 
 
 
