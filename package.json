@@ -10,7 +10,9 @@
     "test:api": "cross-env NODE_ENV=test jest tests/api --detectOpenHandles --forceExit",
     "test:all": "cross-env NODE_ENV=test jest --forceExit",
     "coverage:api": "cross-env NODE_ENV=test jest tests/api --coverage --coverageReporters='text-summary' --coverageReporters='lcov' --detectOpenHandles --forceExit",
-    "coverage:all": "cross-env NODE_ENV=test jest --coverage --coverageReporters='text-summary' --coverageReporters='lcov' --detectOpenHandles --forceExit"
+    "coverage:all": "cross-env NODE_ENV=test jest --coverage --coverageReporters='text-summary' --coverageReporters='lcov' --detectOpenHandles --forceExit",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

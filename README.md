@@ -50,7 +50,7 @@ The Video Games API provides the following features:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/video-games-api.git
+   git clone https://github.com/Kanishk1420/Game-library-service.git
    cd video-games-api
    ```
 
