@@ -73,7 +73,22 @@ const GameSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  dlc: [{
+    title: {
+      type: String,
+      required: true
+    },
+    description: String,
+    releaseDate: Date,
+    price: {
+      amount: Number,
+      currency: {
+        type: String,
+        default: 'USD'
+      }
+    }
+  }]
 });
 GameSchema.index({ title: 1 });
 GameSchema.index({ rating: 1 });

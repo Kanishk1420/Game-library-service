@@ -60,9 +60,17 @@ router.use((req, res, next) => {
   next();
 });
 
+// Fix the main GET route to handle invalid page numbers
 router.get('/', async (req, res) => {
   try {
-    const { page = 1, limit = 10, platform, genre } = req.query;
+    // Parse page and limit, ensuring defaults and valid values
+    let page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    
+    // Ensure page is at least 1
+    if (page < 1) page = 1;
+    
+    const { platform, genre } = req.query;
     const query = {};
     
     if (platform) query.platforms = { $in: platform.split(',') };
@@ -112,6 +120,19 @@ router.get('/platform/:platform', async (req, res) => {
   try {
     const games = await Game.find({ platforms: req.params.platform });
     res.json(games);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get games with DLC
+router.get('/with-dlc', async (req, res) => {
+  try {
+    const gamesWithDLC = await Game.find({ 
+      dlc: { $exists: true, $not: { $size: 0 } } 
+    }).exec();
+    
+    res.json(gamesWithDLC);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -257,8 +278,16 @@ router.get('/:id/developer', async (req, res) => {
 // Get game screenshots
 router.get('/:id/screenshots', async (req, res) => {
   try {
-    const game = await Game.findById(req.params.id).select('screenshots -_id');
-    if (!game) return res.status(404).json({ message: 'Game not found' });
+    const game = await Game.findById(req.params.id).select('screenshots');
+    
+    if (!game) {
+      return res.status(404).json({ message: 'Game not found' });
+    }
+    
+    if (!game.screenshots || game.screenshots.length === 0) {
+      return res.status(404).json({ message: 'No screenshots found for this game' });
+    }
+    
     res.json(game.screenshots);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -268,22 +297,35 @@ router.get('/:id/screenshots', async (req, res) => {
 // Get game system requirements
 router.get('/:id/requirements', async (req, res) => {
   try {
-    const game = await Game.findById(req.params.id).select('systemRequirements -_id');
-    if (!game) return res.status(404).json({ message: 'Game not found' });
-    res.json(game.systemRequirements);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-// Get games with DLC
-router.get('/with-dlc', async (req, res) => {
-  try {
-    const gamesWithDLC = await Game.find({ 
-      dlc: { $exists: true, $not: { $size: 0 } } 
-    }).exec();
+    const game = await Game.findById(req.params.id).select('systemRequirements');
     
-    res.json(gamesWithDLC);
+    if (!game) {
+      return res.status(404).json({ message: 'Game not found' });
+    }
+    
+    // Check if systemRequirements is completely empty
+    if (!game.systemRequirements) {
+      return res.status(404).json({ message: 'No system requirements found for this game' });
+    }
+    
+    // Check if it's an empty object
+    if (Object.keys(game.systemRequirements).length === 0) {
+      return res.status(404).json({ message: 'No system requirements found for this game' });
+    }
+    
+    // Check if minimum and recommended are both missing or empty
+    const hasMinimum = game.systemRequirements.minimum && 
+                      Object.keys(game.systemRequirements.minimum).length > 0;
+                      
+    const hasRecommended = game.systemRequirements.recommended && 
+                          Object.keys(game.systemRequirements.recommended).length > 0;
+    
+    if (!hasMinimum && !hasRecommended) {
+      return res.status(404).json({ message: 'No system requirements found for this game' });
+    }
+    
+    // If we get here, we have valid system requirements
+    res.json(game.systemRequirements);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -298,11 +340,30 @@ router.get('/:id/dlc', async (req, res) => {
       return res.status(404).json({ message: 'Game not found' });
     }
     
-    if (!game.dlc || !Array.isArray(game.dlc)) {
+    if (!game.dlc || game.dlc.length === 0) {
       return res.status(404).json({ message: 'No DLC found for this game' });
     }
     
     res.json(game);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Add a cover image endpoint if missing
+router.get('/:id/coverImage', async (req, res) => {
+  try {
+    const game = await Game.findById(req.params.id).select('coverImage');
+    
+    if (!game) {
+      return res.status(404).json({ message: 'Game not found' });
+    }
+    
+    if (!game.coverImage) {
+      return res.status(404).json({ message: 'No cover image found for this game' });
+    }
+    
+    res.json({ coverImage: game.coverImage });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

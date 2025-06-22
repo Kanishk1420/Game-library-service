@@ -7,7 +7,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:integration": "cross-env NODE_ENV=test jest tests/integration --detectOpenHandles --forceExit",
-    "test:all": "cross-env NODE_ENV=test jest --forceExit"
+    "test:api": "cross-env NODE_ENV=test jest tests/api --detectOpenHandles --forceExit",
+    "test:all": "cross-env NODE_ENV=test jest --forceExit",
+    "coverage:api": "cross-env NODE_ENV=test jest tests/api --coverage --coverageReporters='text-summary' --coverageReporters='lcov' --detectOpenHandles --forceExit",
+    "coverage:all": "cross-env NODE_ENV=test jest --coverage --coverageReporters='text-summary' --coverageReporters='lcov' --detectOpenHandles --forceExit"
   },
   "keywords": [],
   "author": "",
