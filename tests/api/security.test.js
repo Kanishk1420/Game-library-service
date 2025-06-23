@@ -38,7 +38,6 @@ describe('API Security Tests', () => {
       .get('/api/games/search?title[$ne]=');
     
     expect(response.status).toBe(200);
-    // Should not return all games due to NoSQL injection attempt
   });
   
   it('should reject invalid MongoDB ObjectIds', async () => {

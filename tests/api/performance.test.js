@@ -5,7 +5,6 @@ const { app } = require('../../server');
 
 describe('API Performance Tests', () => {
   beforeAll(async () => {
-    // Ensure any previous connections are closed
     if (mongoose.connection.readyState !== 0) {
       await mongoose.disconnect();
     }
@@ -48,6 +47,6 @@ describe('API Performance Tests', () => {
     console.log(`GET /api/games/search took ${duration}ms`);
     
     expect(response.status).toBe(200);
-    expect(duration).toBeLessThan(200); // Adjust threshold as needed
+    expect(duration).toBeLessThan(200);
   });
 });

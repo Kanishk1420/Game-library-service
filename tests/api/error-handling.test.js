@@ -17,7 +17,6 @@ jest.mock('../../models/Game', () => {
 const Game = require('../../models/Game');
 
 describe('API Error Handling Tests', () => {
-  // Test database error handling
   it('should handle database error on GET /api/games', async () => {
     Game.find.mockImplementationOnce(() => {
       throw new Error('Database connection error');

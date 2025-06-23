@@ -75,7 +75,6 @@ describe('Specialized API Routes Tests', () => {
   
   // Clean up after tests
   afterAll(async () => {
-    // Clean up the test data
     if (testGameId) {
       await Game.findByIdAndDelete(testGameId);
     }
@@ -139,7 +138,6 @@ describe('Specialized API Routes Tests', () => {
     });
     
     it.skip('should return 404 when game has no system requirements', async () => {
-      // Create a game with explicitly empty system requirements
       const gameWithoutReqs = {
         title: "No Requirements Game",
         platforms: ["PC"],
@@ -150,7 +148,6 @@ describe('Specialized API Routes Tests', () => {
         description: "A test game without system requirements",
         price: { amount: 9.99, currency: "USD" },
         rating: 5,
-        // Add empty system requirements object
         systemRequirements: {}
       };
       
@@ -170,8 +167,6 @@ describe('Specialized API Routes Tests', () => {
   // 3. Test DLC endpoints
   describe('DLC Endpoints', () => {
     it('should get games with DLC', async () => {
-      // This test requires that the Game model has a dlc field
-      // Make sure your model supports this before running this test
       
       const response = await request(app)
         .get('/api/games/with-dlc');
@@ -186,10 +181,7 @@ describe('Specialized API Routes Tests', () => {
     });
     
     it('should get specific game\'s DLCs', async () => {
-      // This test assumes your game model has dlc field
-      // Add DLC to the test game if it doesn't already have it
       if (!testGameId) {
-        // Create a game with DLC if we don't have one
         const gameWithDLC = {
           ...completeTestGame,
           dlc: [{ title: 'Test DLC', description: 'DLC for testing' }]
@@ -208,7 +200,6 @@ describe('Specialized API Routes Tests', () => {
     });
     
     it('should return 404 when DLC is not found for a game', async () => {
-      // Create a game without DLC
       const gameWithoutDLC = {
         title: "No DLC Game",
         platforms: ["PC"],
@@ -240,12 +231,9 @@ describe('Specialized API Routes Tests', () => {
         .get(`/api/games/${testGameId}/coverImage`);
       
       expect(response.status).toBe(200);
-      
-      // Check if response is an object with coverImage property
       if (typeof response.body === 'object' && !Array.isArray(response.body)) {
         expect(response.body).toHaveProperty('coverImage', completeTestGame.coverImage);
-      } 
-      // Or if response is just the string URL directly
+      }
       else {
         expect(response.body).toBe(completeTestGame.coverImage);
       }

@@ -23,9 +23,6 @@ app.use((req, res, next) => {
   res.type('application/json');
   next();
 });
-
-// Connect to MongoDB - only if not in test mode
-// This is the key change - we don't automatically connect when imported in tests
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);

@@ -64,7 +64,6 @@ describe('Additional API Routes Tests', () => {
         .get(`/api/games/${testGameId}/title`);
       
       expect(response.status).toBe(200);
-      // The API returns the direct value, not an object
       expect(response.body).toBe("Additional API Test Game");
     });
     
@@ -73,7 +72,6 @@ describe('Additional API Routes Tests', () => {
         .get(`/api/games/${testGameId}/rating`);
       
       expect(response.status).toBe(200);
-      // The API returns the direct value, not an object
       expect(response.body).toBe(8.0);
     });
     
@@ -90,7 +88,7 @@ describe('Additional API Routes Tests', () => {
       const response = await request(app)
         .get('/api/games?sort=invalidField');
       
-      expect(response.status).toBe(200); // Should default to a valid sort
+      expect(response.status).toBe(200); 
     });
     
     it('should handle extremely large limit parameter', async () => {
@@ -98,7 +96,6 @@ describe('Additional API Routes Tests', () => {
         .get('/api/games?limit=1000');
       
       expect(response.status).toBe(200);
-      // Should cap at a reasonable number
       expect(response.body.games.length).toBeLessThan(100);
     });
   });

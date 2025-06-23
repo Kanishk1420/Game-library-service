@@ -23,7 +23,6 @@ describe('API Integration Tests', () => {
   
   // Setup connection to the real MongoDB Atlas
   beforeAll(async () => {
-    // Ensure any previous connections are closed
     if (mongoose.connection.readyState !== 0) {
       await mongoose.disconnect();
     }
@@ -40,7 +39,6 @@ describe('API Integration Tests', () => {
   
   // Close database connection after all tests
   afterAll(async () => {
-    // Close the connection completely
     await mongoose.disconnect();
     await new Promise(resolve => setTimeout(resolve, 500)); // Give time for connections to close
     console.log('Disconnected from MongoDB Atlas');
@@ -48,7 +46,6 @@ describe('API Integration Tests', () => {
   
   // Clear test data after each test
   afterEach(async () => {
-    // Only delete our test game
     if (testGameId) {
       await Game.findByIdAndDelete(testGameId);
       testGameId = null;
@@ -290,7 +287,7 @@ describe('API Integration Tests', () => {
       const response = await request(app)
         .get('/api/games/invalid-id-format');
       
-      expect(response.status).toBe(500); // Or 400 depending on your error handler
+      expect(response.status).toBe(500);
     });
   });
 });

@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 router.use((req, res, next) => {
   const originalJson = res.json;
   res.json = function(data) {
-    // Set content type to application/json
     res.set('Content-Type', 'application/json');
     
     const formatDate = (date) => {
@@ -60,10 +59,9 @@ router.use((req, res, next) => {
   next();
 });
 
-// Fix the main GET route to handle invalid page numbers
+// main GET route to handle invalid page numbers
 router.get('/', async (req, res) => {
   try {
-    // Parse page and limit, ensuring defaults and valid values
     let page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     
@@ -303,12 +301,12 @@ router.get('/:id/requirements', async (req, res) => {
       return res.status(404).json({ message: 'Game not found' });
     }
     
-    // Check if systemRequirements is completely empty
+    
     if (!game.systemRequirements) {
       return res.status(404).json({ message: 'No system requirements found for this game' });
     }
     
-    // Check if it's an empty object
+    
     if (Object.keys(game.systemRequirements).length === 0) {
       return res.status(404).json({ message: 'No system requirements found for this game' });
     }
@@ -324,7 +322,7 @@ router.get('/:id/requirements', async (req, res) => {
       return res.status(404).json({ message: 'No system requirements found for this game' });
     }
     
-    // If we get here, we have valid system requirements
+    
     res.json(game.systemRequirements);
   } catch (err) {
     res.status(500).json({ message: err.message });

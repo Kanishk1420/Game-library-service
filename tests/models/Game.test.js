@@ -3,7 +3,6 @@ const Game = require('../../models/Game');
 
 describe('Game Model Tests', () => {
   beforeAll(async () => {
-    // Use a unique database name for each test run
     const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/test-game-api';
     await mongoose.connect(mongoURI);
   });
@@ -45,10 +44,8 @@ describe('Game Model Tests', () => {
   it('should fail validation when required fields are missing', async () => {
     const invalidGame = {
       title: 'Test Game',
-      // Missing required fields
       platforms: [],
       genre: ['Action']
-      // Missing developer, publisher, releaseDate, description, and price
     };
 
     const game = new Game(invalidGame);
@@ -109,7 +106,7 @@ describe('Game Model Tests', () => {
         amount: 59.99,
         currency: 'USD'
       },
-      rating: 11 // Invalid: greater than 10
+      rating: 11
     };
 
     const game = new Game(gameWithInvalidRating);
