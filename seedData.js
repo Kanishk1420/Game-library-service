@@ -534,7 +534,7 @@ const sampleGames = [
     {
       title: "Shattered Space",
       description: "New storyline, locations, and quests within the enigmatic House Va'ruun",
-      releaseStatus: "TBA 2024"
+      releaseDate: new Date("2024-09-30")
     }
   ]
 },
