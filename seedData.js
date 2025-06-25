@@ -592,6 +592,238 @@ const sampleGames = [
       releaseDate: new Date("2022-03-10")
     }
   ]
+},
+{
+  title: "Hogwarts Legacy",
+  platforms: ["PC", "PlayStation", "Xbox", "Nintendo"],
+  genre: ["Action RPG", "Open World", "Fantasy"],
+  developer: "Avalanche Software",
+  publisher: "Warner Bros. Games",
+  releaseDate: new Date("2023-02-10"),
+  description: "An immersive, open-world action RPG set in the 1800s wizarding world. Experience Hogwarts in the 1800s as your own character, learn powerful spells, brew potions, and discover fantastic beasts.",
+  coverImage: "https://image.api.playstation.com/vulcan/ap/rnd/202503/2716/f6b1e4512ee6061913f7d604da8f5f39566be56ca32a68ee.png",
+  screenshots: [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS53FU99Yuyb4E3g2sETNDutA0nX5s5q_Becg&s",
+    "https://i.redd.it/q3fy783hlkn51.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhuABAQLJ5UnlmEY4CI_IzkJwtjSRr7XX5pg&s",
+    "https://contentful.harrypotter.com/usf1vwtuqyxm/5Nj54bPAAuwzor73HLpLmi/db57cc07b8d95b46ff7dc40c7602add1/Screenshot_2022-11-01_11-11-47_01_Ben__1_.jpg"
+  ],
+  systemRequirements: {
+    minimum: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i5-6600 / AMD Ryzen 5 1400",
+      memory: "16 GB RAM",
+      graphics: "NVIDIA GeForce GTX 960 4GB / AMD Radeon RX 470 4GB",
+      storage: "85 GB SSD"
+    },
+    recommended: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i7-8700 / AMD Ryzen 5 3600",
+      memory: "16 GB RAM",
+      graphics: "NVIDIA GeForce GTX 1080 Ti / AMD Radeon RX 5700 XT",
+      storage: "85 GB SSD"
+    }
+  },
+  price: {
+    amount: 59.99,
+    currency: "USD"
+  },
+  rating: 8.9,
+  dlc: [
+    {
+      title: "Dark Arts Pack",
+      description: "Includes the Dark Arts Cosmetic Set, Dark Arts Battle Arena, and Dark Arts Thestral Mount",
+      releaseDate: new Date("2023-02-10")
+    }
+  ]
+},
+{
+  title: "Helldivers 2",
+  platforms: ["PC", "PlayStation"],
+  genre: ["Third-person shooter", "Cooperative", "Sci-Fi"],
+  developer: "Arrowhead Game Studios",
+  publisher: "Sony Interactive Entertainment",
+  releaseDate: new Date("2024-02-08"),
+  description: "A co-op shooter where you fight for a procedurally generated universe against alien threats. Join the elite Helldivers and spread managed democracy throughout the galaxy.",
+  coverImage: "https://helldivers.wiki.gg/images/5/5e/HD2_SteamLibrary-Portrait.jpg?ffffe7",
+  screenshots: [
+    "https://www.newgamenetwork.com/images/uploads/gallery/Helldivers2/helld2_09.jpg",
+    "https://www.newgamenetwork.com/images/uploads/gallery/Helldivers2/helld2_01.jpg",
+    "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/05/helldivers-2-_-playstation-showcase-2023-1-50-screenshot.jpg",
+    "https://i0.wp.com/oldcynic.com/wp-content/uploads/2024/02/Helldivers-2-Screenshot-Lake-View.jpg?resize=1024%2C576&ssl=1",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFu2opTttGQQLzmIYUMkJTG6xSsaozFknNcQ&s"
+  ],
+  systemRequirements: {
+    minimum: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i7-4790K / AMD Ryzen 5 1500X",
+      memory: "8 GB RAM",
+      graphics: "NVIDIA GeForce GTX 1050 Ti / AMD Radeon RX 470",
+      storage: "100 GB SSD"
+    },
+    recommended: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i7-9700K / AMD Ryzen 7 3700X",
+      memory: "16 GB RAM",
+      graphics: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 6600 XT",
+      storage: "100 GB SSD"
+    }
+  },
+  price: {
+    amount: 39.99,
+    currency: "USD"
+  },
+  rating: 9.0,
+  dlc: [
+    {
+      title: "Super Citizen Edition",
+      description: "Includes premium armor sets and emotes",
+      releaseDate: new Date("2024-02-08")
+    },
+    {
+      title: "Warbond: Democratic Detonation",
+      description: "New armor sets, weapons, and customization options",
+      releaseDate: new Date("2024-03-14")
+    }
+  ]
+},
+{
+  title: "Palworld",
+  platforms: ["PC", "Xbox"],
+  genre: ["Survival", "Crafting", "Open World"],
+  developer: "Pocketpair",
+  publisher: "Pocketpair",
+  releaseDate: new Date("2024-01-19"),
+  description: "A multiplayer open-world survival crafting game where you can collect, breed, and battle with mysterious creatures called Pals, while building bases and exploring a vast world.",
+  coverImage: "https://m.media-amazon.com/images/M/MV5BMDdmNDZkOGUtMTNmZi00NTA4LWI3ZDktZDlhZjcxM2YyOGE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  screenshots: [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qRq9gOQ5RSf8by1TwIi3lxcgIL-5xW9l4w&s",
+    "https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/ss_15dc4745d8adce7760cebbc709add652733fc879.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcGcY-k_w1CLatMwUTNxlA48ybgdWKh7jUAA&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjY84YJo7Mfp9et65oobl7NbbMXEhAHlLZlg&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz5BNSf3MKJ-2k0W2_vJnwGr9yFQKtWtL3Kg&s"
+  ],
+  systemRequirements: {
+    minimum: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i5-3570K / AMD Ryzen 3 1200",
+      memory: "8 GB RAM",
+      graphics: "NVIDIA GeForce GTX 1050 / AMD Radeon RX 560",
+      storage: "40 GB"
+    },
+    recommended: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i9-9900K / AMD Ryzen 5 3600",
+      memory: "16 GB RAM",
+      graphics: "NVIDIA GeForce RTX 2070 / AMD Radeon RX 5700 XT",
+      storage: "40 GB SSD"
+    }
+  },
+  price: {
+    amount: 29.99,
+    currency: "USD"
+  },
+  rating: 8.2
+},
+{
+  title: "Diablo IV",
+  platforms: ["PC", "PlayStation", "Xbox"],
+  genre: ["Action RPG", "Hack and Slash", "Dark Fantasy"],
+  developer: "Blizzard Entertainment",
+  publisher: "Blizzard Entertainment",
+  releaseDate: new Date("2023-06-06"),
+  description: "The fourth mainline installment in the Diablo series. Return to the dark world of Sanctuary in a gothic, medieval fantasy setting and face Lilith, daughter of Mephisto, who has been summoned back to the mortal realm.",
+  coverImage: "https://image.api.playstation.com/vulcan/ap/rnd/202211/3017/Oo1B84A7BLCT157YFSxjtwG0.png",
+  screenshots: [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvDTMApVsHJbTWVQwKm0hYDTp0nnFD4g9CA&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqM9-CupbtDV4WHmpAE7IU5ROjZLu6CjGGbA&s",
+    "https://i.redd.it/fontpgvet8t51.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWVfoe3kQa7V-n8Iv37SqNp1nuZ2fiX1Dz5g&s",
+    "https://www.gamespot.com/a/uploads/scale_medium/1647/16470614/4336307-diablo4spiritbornarmor.jpg"
+  ],
+  systemRequirements: {
+    minimum: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i5-2500K / AMD FX-8350",
+      memory: "8 GB RAM",
+      graphics: "NVIDIA GeForce GTX 660 / AMD Radeon R9 280",
+      storage: "90 GB SSD"
+    },
+    recommended: {
+      os: "Windows 10 64-bit",
+      processor: "Intel Core i5-9600K / AMD Ryzen 5 2600",
+      memory: "16 GB RAM",
+      graphics: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT",
+      storage: "90 GB SSD"
+    }
+  },
+  price: {
+    amount: 69.99,
+    currency: "USD"
+  },
+  rating: 8.7,
+  dlc: [
+    {
+      title: "Season 1: Season of the Malignant",
+      description: "New seasonal content, Battle Pass, and gameplay features",
+      releaseDate: new Date("2023-07-20")
+    },
+    {
+      title: "Vessel of Hatred",
+      description: "First expansion, introducing the Spiritborn class and the jungles of Nahantu",
+      releaseDate: new Date("2024-10-08")
+    }
+  ]
+},
+{
+  title: "Alan Wake 2",
+  platforms: ["PC", "PlayStation", "Xbox"],
+  genre: ["Survival Horror", "Psychological Thriller", "Action"],
+  developer: "Remedy Entertainment",
+  publisher: "Epic Games",
+  releaseDate: new Date("2023-10-27"),
+  description: "The long-awaited sequel to the psychological thriller from Remedy Entertainment. FBI agent Saga Anderson arrives in Bright Falls to investigate ritual murders, only to discover pages from a horror story that starts to come true.",
+  coverImage: "https://image.api.playstation.com/vulcan/ap/rnd/202305/2420/c3daf3037feb797d9e71b81618e3b5ff3ff1f9609db5a4a2.png",
+  screenshots: [
+    "https://www.newgamenetwork.com/images/uploads/gallery/AlanWake2/aw2_09.jpg",
+    "https://cdn2.unrealengine.com/00-alan-wake-2-pm-cover-3840x2160-064fe895bd97.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1NkB-Q9CMwRgMawNaGBb6st9saVZ4PD98mA&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu_8E6HVfFlrq9bce21oCQK7T63CShcogxUw&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfHJOyoDDcYnCrD0-48X5Gel_GfWSyxEGPoA&s"
+  ],
+  systemRequirements: {
+    minimum: {
+      os: "Windows 10 64-bit",
+      processor: "AMD Ryzen 5 1600X / Intel Core i5-7600K",
+      memory: "16 GB RAM",
+      graphics: "AMD Radeon RX 5700 / NVIDIA GeForce RTX 2060",
+      storage: "90 GB SSD"
+    },
+    recommended: {
+      os: "Windows 10 64-bit",
+      processor: "AMD Ryzen 7 3700X / Intel Core i7-9700K",
+      memory: "16 GB RAM",
+      graphics: "AMD Radeon RX 6700 XT / NVIDIA GeForce RTX 3070",
+      storage: "90 GB SSD"
+    }
+  },
+  price: {
+    amount: 59.99,
+    currency: "USD"
+  },
+  rating: 9.2,
+  dlc: [
+    {
+      title: "Night Springs",
+      description: "An expansion with new episodes in the fictional Twilight Zone-inspired TV series",
+      releaseDate: new Date("2024-06-26")
+    },
+    {
+      title: "The Lake House",
+      description: "A standalone expansion about the mysterious Federal Bureau of Control facility",
+      releaseDate: new Date("2024-10-16")
+    }
+  ]
 }
 ];
 
