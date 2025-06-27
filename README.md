@@ -103,6 +103,14 @@ npm test -- tests/api/security.test.js
 npm test -- --coverage
 ```
 
+### Keploy API Test Generation
+
+This project also uses Keploy for automated API test generation and validation. View the test results here:
+
+[Keploy API Test Report](https://app.keploy.io/api-testing/tr/bac4b4b9-8b4c-4a1d-8596-eca6a3ff4274?suiteId=4120e72e-5dae-4108-9661-69a0b3b0f806)
+
+Keploy automatically generates test cases based on API traffic and ensures compatibility with the API specification.
+
 ## Viewing Test Coverage
 
 To view the test coverage report:
@@ -224,3 +232,4 @@ SOFTWARE.
 ```
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![CI Status](https://github.com/Kanishk1420/Game-library-service/actions/workflows/ci.yml/badge.svg)
