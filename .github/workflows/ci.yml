@@ -53,3 +53,17 @@ jobs:
         directory: ./coverage/
         fail_ci_if_error: true
         flags: node-${{ matrix.node-version }}
+    - name: Install Keploy CLI
+      run: |
+            curl --silent -L https://keploy.io/ent/install.sh | bash
+    - name: Run Keploy Test Suite
+      run: |
+        # Start your application in the background
+        npm start &
+        # Wait for application to start
+        sleep 10
+        # Run Keploy tests
+        export KEPLOY_API_KEY=${{ secrets.KEPLOY_API_KEY }}
+        keploy test-suite --app=94cad786-1403-4d02-8860-f1c334ada9ee --base-path http://localhost:5000/api/games --cloud
+        # Kill the background process
+        kill $!
