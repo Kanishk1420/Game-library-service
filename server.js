@@ -9,9 +9,11 @@ app.use(express.json());
 
 // Import routes
 const gameRoutes = require('./routes/gameRoutes');
+const { swaggerUi, swaggerSpec } = require('./swagger');
 
 // Use routes
 app.use('/api/games', gameRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Simple test route
 app.get('/', (req, res) => {

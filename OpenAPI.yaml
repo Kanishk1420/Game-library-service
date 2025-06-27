@@ -1,0 +1,782 @@
+openapi: 3.0.0
+info:
+  title: Video Games API
+  description: A comprehensive API for video game information, management, and discovery.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+servers:
+  - url: http://localhost:5000
+    description: Development server
+paths:
+  /api/games:
+    get:
+      summary: Get all games
+      description: Retrieve a paginated list of all games in the database.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          description: Number of games per page
+        - in: query
+          name: platform
+          schema:
+            type: string
+          description: Filter by platform (comma-separated for multiple)
+        - in: query
+          name: genre
+          schema:
+            type: string
+          description: Filter by genre (comma-separated for multiple)
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  games:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Game'
+                  totalPages:
+                    type: integer
+                  currentPage:
+                    type: integer
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Add a new game
+      description: Create a new game entry in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameInput'
+      responses:
+        '201':
+          description: Game created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}:
+    get:
+      summary: Get a specific game
+      description: Retrieve detailed information about a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+        - in: query
+          name: fields
+          schema:
+            type: string
+          description: Comma-separated list of fields to return
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update a game completely
+      description: Replace all game information with new data.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameInput'
+      responses:
+        '200':
+          description: Game updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      summary: Update a game partially
+      description: Update specific fields of a game without affecting others.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GamePartialUpdate'
+      responses:
+        '200':
+          description: Game updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Game'
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a game
+      description: Remove a game from the database permanently.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Game deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Game deleted successfully
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/search:
+    get:
+      summary: Search games
+      description: Find games using various search criteria.
+      parameters:
+        - in: query
+          name: title
+          schema:
+            type: string
+          description: Search by game title (case-insensitive)
+        - in: query
+          name: genre
+          schema:
+            type: string
+          description: Filter by specific genre
+        - in: query
+          name: developer
+          schema:
+            type: string
+          description: Search by developer name (case-insensitive)
+        - in: query
+          name: minRating
+          schema:
+            type: number
+            format: float
+          description: Minimum rating filter (0-10)
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+            format: float
+          description: Maximum price filter (in dollars)
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/platform/{platform}:
+    get:
+      summary: Get games by platform
+      description: Get all games available on a specific platform.
+      parameters:
+        - in: path
+          name: platform
+          required: true
+          schema:
+            type: string
+            enum: [PC, PlayStation, Xbox, Nintendo, Mobile, Other]
+          description: Platform name
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/platforms:
+    get:
+      summary: Get game platforms
+      description: Get the platforms a game is available on.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  enum: [PC, PlayStation, Xbox, Nintendo, Mobile, Other]
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/genre:
+    get:
+      summary: Get game genres
+      description: Get the genres of a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/developer:
+    get:
+      summary: Get game developer
+      description: Get the developer of a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  developer:
+                    type: string
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/screenshots:
+    get:
+      summary: Get game screenshots
+      description: Get the screenshots of a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+        '404':
+          description: Game or screenshots not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/requirements:
+    get:
+      summary: Get game system requirements
+      description: Get the system requirements of a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemRequirements'
+        '404':
+          description: Game or system requirements not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/with-dlc:
+    get:
+      summary: Get games with DLC
+      description: Find all games that have downloadable content available.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    title:
+                      type: string
+                    dlc:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DLC'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/dlc:
+    get:
+      summary: Get game's DLC
+      description: Retrieve all DLC content for a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  dlc:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DLC'
+        '404':
+          description: Game or DLC not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/coverImage:
+    get:
+      summary: Get game cover image
+      description: Get the cover image URL of a specific game.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coverImage:
+                    type: string
+                    format: uri
+        '404':
+          description: Game or cover image not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/games/{id}/{property}:
+    get:
+      summary: Get any game property
+      description: Access any allowed property dynamically.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Game ID
+        - in: path
+          name: property
+          required: true
+          schema:
+            type: string
+            enum: [title, platforms, genre, developer, publisher, releaseDate, description, coverImage, screenshots, systemRequirements, price, rating]
+          description: Property name
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                description: The requested property value
+        '400':
+          description: Invalid property requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Game:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        platforms:
+          type: array
+          items:
+            type: string
+            enum: [PC, PlayStation, Xbox, Nintendo, Mobile, Other]
+        genre:
+          type: array
+          items:
+            type: string
+        developer:
+          type: string
+        publisher:
+          type: string
+        releaseDate:
+          type: string
+          format: date
+        description:
+          type: string
+        coverImage:
+          type: string
+          format: uri
+        screenshots:
+          type: array
+          items:
+            type: string
+            format: uri
+        systemRequirements:
+          $ref: '#/components/schemas/SystemRequirements'
+        price:
+          $ref: '#/components/schemas/Price'
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+        createdAt:
+          type: string
+          format: date-time
+        dlc:
+          type: array
+          items:
+            $ref: '#/components/schemas/DLC'
+
+    GameInput:
+      type: object
+      required:
+        - title
+        - platforms
+        - genre
+        - developer
+        - publisher
+        - releaseDate
+        - description
+        - price
+      properties:
+        title:
+          type: string
+          example: "The Witcher 3: Wild Hunt"
+        platforms:
+          type: array
+          items:
+            type: string
+            enum: [PC, PlayStation, Xbox, Nintendo, Mobile, Other]
+          example: ["PC", "PlayStation"]
+        genre:
+          type: array
+          items:
+            type: string
+          example: ["RPG", "Open World"]
+        developer:
+          type: string
+          example: "CD Projekt Red"
+        publisher:
+          type: string
+          example: "CD Projekt"
+        releaseDate:
+          type: string
+          format: date
+          example: "2015-05-19"
+        description:
+          type: string
+          example: "An action role-playing game set in an open world fantasy universe."
+        coverImage:
+          type: string
+          format: uri
+          example: "https://example.com/cover.jpg"
+        screenshots:
+          type: array
+          items:
+            type: string
+            format: uri
+          example: ["https://example.com/screenshot1.jpg"]
+        systemRequirements:
+          $ref: '#/components/schemas/SystemRequirements'
+        price:
+          type: object
+          required:
+            - amount
+          properties:
+            amount:
+              type: number
+              format: float
+              example: 39.99
+            currency:
+              type: string
+              default: "USD"
+              example: "USD"
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          example: 9.3
+
+    GamePartialUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        platforms:
+          type: array
+          items:
+            type: string
+        genre:
+          type: array
+          items:
+            type: string
+        developer:
+          type: string
+        publisher:
+          type: string
+        releaseDate:
+          type: string
+          format: date
+        description:
+          type: string
+        coverImage:
+          type: string
+          format: uri
+        screenshots:
+          type: array
+          items:
+            type: string
+            format: uri
+        systemRequirements:
+          $ref: '#/components/schemas/SystemRequirements'
+        price:
+          type: object
+          properties:
+            amount:
+              type: number
+              format: float
+            currency:
+              type: string
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+
+    SystemRequirements:
+      type: object
+      properties:
+        minimum:
+          type: object
+          properties:
+            os:
+              type: string
+              example: "Windows 10"
+            processor:
+              type: string
+              example: "Intel Core i5-2500K"
+            memory:
+              type: string
+              example: "8 GB RAM"
+            graphics:
+              type: string
+              example: "NVIDIA GeForce GTX 660"
+            storage:
+              type: string
+              example: "35 GB"
+        recommended:
+          type: object
+          properties:
+            os:
+              type: string
+              example: "Windows 10"
+            processor:
+              type: string
+              example: "Intel Core i7-3770"
+            memory:
+              type: string
+              example: "16 GB RAM"
+            graphics:
+              type: string
+              example: "NVIDIA GeForce GTX 1060"
+            storage:
+              type: string
+              example: "35 GB SSD"
+
+    Price:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+          example: 39.99
+        currency:
+          type: string
+          example: "USD"
+
+    DLC:
+      type: object
+      properties:
+        title:
+          type: string
+          example: "Hearts of Stone"
+        description:
+          type: string
+          example: "A 10-hour adventure where you'll cross paths with the enigmatic Man of Glass"
+        releaseDate:
+          type: string
+          format: date
+          example: "2015-10-13"
+        price:
+          $ref: '#/components/schemas/Price'
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Error description"

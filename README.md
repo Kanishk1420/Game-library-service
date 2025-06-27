@@ -166,6 +166,12 @@ The test suite aims for comprehensive coverage of all API endpoints and function
 - **Mock Tests**: Verify route handlers with mocked database interactions
 - **Model Tests**: Validate schema and model validation functionality
 
+## API Documentation
+
+Interactive API documentation is available at `/api-docs` when the server is running.
+
+![Swagger UI Screenshot](./coverage/Screenshot%202025-06-27%20135825.png)
+
 ## Contributing
 
 We welcome and encourage contributions to this project! Here's how you can help:
